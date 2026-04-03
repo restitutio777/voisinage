@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { Search, MapPin, Gift, RefreshCw, Euro, Clock, X, ShoppingBasket, Wrench, HeartHandshake, Shirt, Package, Leaf, ChevronDown, Navigation } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useToast } from '../contexts/ToastContext';
@@ -571,6 +572,34 @@ export function HomePage() {
           </div>
         )}
       </div>
+
+        <div className="px-4 py-10 text-center">
+          <div className="max-w-md mx-auto">
+            <h2 className="text-2xl font-bold text-stone-900 mb-3">Lancez le mouvement dans votre quartier</h2>
+            <p className="text-stone-600 mb-6 leading-relaxed">
+              Voisinage ne fonctionne que si vous le partagez. Pas d'algorithme, pas de pub — juste des voisins qui s'entraident. Publiez votre première annonce et parlez-en autour de vous.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center mb-8">
+              <Link to="/creer" className="btn-primary">Publier une annonce</Link>
+              <button
+                onClick={() => {
+                  if (navigator.share) {
+                    navigator.share({ title: 'Voisinage', text: 'Entraide entre voisins — donnez, prêtez, échangez près de chez vous.', url: 'https://voisinage.app' });
+                  } else {
+                    navigator.clipboard.writeText('https://voisinage.app');
+                    showToast('Lien copié !', 'success');
+                  }
+                }}
+                className="btn-secondary"
+              >
+                Partager Voisinage
+              </button>
+            </div>
+            <p className="text-xs text-stone-400 leading-relaxed">
+              Voisinage est un projet offert à la communauté. Si vous souhaitez soutenir son développement, <a href="mailto:contact@voisinage.app" className="text-primary-600 hover:underline">contactez-nous</a>.
+            </p>
+          </div>
+        </div>
 
         <HomePageFooter />
       </div>
