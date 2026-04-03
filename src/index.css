@@ -1,0 +1,215 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-size: 16px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply text-stone-800 bg-cream-50 antialiased;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    position: relative;
+  }
+
+  @media (min-width: 1024px) {
+    body {
+      background-color: #1a3a34;
+      background-image: url("/classy-fabric.png");
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold text-stone-900;
+    line-height: 1.3;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary-500;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  button, a {
+    @apply transition-colors duration-200;
+  }
+
+  input, select, textarea {
+    @apply text-base;
+    font-size: 16px;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-medium text-lg min-h-touch-lg;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+  }
+
+  .btn-secondary {
+    @apply btn bg-white text-stone-700 border-2 border-stone-300 hover:bg-stone-50 focus:ring-stone-400;
+  }
+
+  .btn-donner {
+    @apply btn bg-donner text-white hover:bg-donner-dark focus:ring-donner;
+  }
+
+  .btn-echanger {
+    @apply btn bg-echanger text-white hover:bg-echanger-dark focus:ring-echanger;
+  }
+
+  .btn-vendre {
+    @apply btn bg-vendre text-white hover:bg-vendre-dark focus:ring-vendre;
+  }
+
+  .btn-preter {
+    @apply btn bg-preter text-white hover:bg-preter-dark focus:ring-preter;
+  }
+
+  .btn-cherche {
+    @apply btn bg-cherche text-white hover:bg-cherche-dark focus:ring-cherche;
+  }
+
+  .input {
+    @apply w-full px-4 py-3 text-lg border-2 border-stone-300 rounded-xl bg-white;
+    @apply focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-200;
+    @apply placeholder:text-stone-400;
+  }
+
+  .label {
+    @apply block text-lg font-medium text-stone-700 mb-2;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-sm border border-stone-200 overflow-hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .card-elevated {
+    @apply card shadow-md;
+  }
+
+  .card-elevated-lg {
+    @apply card shadow-lg;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .badge-donner {
+    @apply badge bg-donner-light text-donner-dark;
+  }
+
+  .badge-echanger {
+    @apply badge bg-echanger-light text-echanger-dark;
+  }
+
+  .badge-vendre {
+    @apply badge bg-vendre-light text-vendre-dark;
+  }
+
+  .badge-preter {
+    @apply badge bg-preter-light text-preter-dark;
+  }
+
+  .badge-cherche {
+    @apply badge bg-cherche-light text-cherche-dark;
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slide-down 0.25s ease-out;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.25s ease-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(
+    90deg,
+    #f5f5f4 0%,
+    #e7e5e4 50%,
+    #f5f5f4 100%
+  );
+  background-size: 1000px 100%;
+}

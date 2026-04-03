@@ -1,0 +1,40 @@
+{
+  "name": "Voisinage — Entraide et partage entre voisins",
+  "short_name": "Voisinage",
+  "description": "Donnez, échangez, prêtez ou vendez entre voisins. Plateforme locale d'entraide entre habitants. Recherche par code postal, messagerie intégrée.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fefdfb",
+  "theme_color": "#45897c",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-launchericon-512-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["lifestyle", "social"],
+  "lang": "fr"
+}
