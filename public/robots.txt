@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /messages
+Disallow: /messages/
+Disallow: /profil
+Disallow: /connexion
+Disallow: /inscription
+
+Sitemap: https://voisinage.app/sitemap.xml
