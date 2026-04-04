@@ -21,6 +21,26 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://voisinage.app/don-objets-gratuit</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://voisinage.app/pret-outils-entre-voisins</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://voisinage.app/echange-services-voisins</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://voisinage.app/entraide-locale</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://voisinage.app/mentions-legales</loc>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>

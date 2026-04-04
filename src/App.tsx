@@ -23,6 +23,10 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { MentionsLegalesPage } from './pages/MentionsLegalesPage';
 import { PolitiqueConfidentialitePage } from './pages/PolitiqueConfidentialitePage';
 import { CGUPage } from './pages/CGUPage';
+import { DonObjetsPage } from './pages/seo/DonObjetsPage';
+import { PretOutilsPage } from './pages/seo/PretOutilsPage';
+import { EchangeServicesPage } from './pages/seo/EchangeServicesPage';
+import { EntraideLocalePage } from './pages/seo/EntraideLocalePage';
 
 function App() {
   return (
@@ -51,6 +55,10 @@ function App() {
                   <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
                   <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />
                   <Route path="/conditions-utilisation" element={<CGUPage />} />
+                  <Route path="/don-objets-gratuit" element={<DonObjetsPage />} />
+                  <Route path="/pret-outils-entre-voisins" element={<PretOutilsPage />} />
+                  <Route path="/echange-services-voisins" element={<EchangeServicesPage />} />
+                  <Route path="/entraide-locale" element={<EntraideLocalePage />} />
                   <Route path="*" element={<NotFoundPage />} />
                 </Routes>
               </Layout>
