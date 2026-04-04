@@ -371,11 +371,11 @@ export function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-stone-900/55 via-stone-900/35 to-stone-900/75" />
 
         <div className="relative flex flex-col items-center text-center mb-8">
-          <div className="w-[4.5rem] h-[4.5rem] rounded-full bg-white/95 backdrop-blur-sm flex items-center justify-center shadow-xl shadow-black/25 mb-5 ring-2 ring-sun/40">
-            <Logo size={44} />
+          <div className="w-10 h-10 rounded-lg bg-white/95 backdrop-blur-sm flex items-center justify-center shadow-lg shadow-black/15 mb-3">
+            <Logo size={28} />
           </div>
-          <h1 className="text-4xl font-bold tracking-tight mb-2 font-heading" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.4)', color: '#fff3e0' }}>Voisinage</h1>
-          <p className="text-sm font-semibold tracking-wider uppercase text-white bg-stone-900/50 backdrop-blur-md px-5 py-2 rounded-full border border-white/15 shadow-lg shadow-black/10" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>L'entraide entre voisins</p>
+          <h1 className="text-2xl font-bold text-white leading-none" style={{ fontFamily: "'Nunito', sans-serif", letterSpacing: '0.02em', textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>Voisinage</h1>
+          <p className="text-[11px] font-semibold tracking-wider uppercase text-white/70 mt-1" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>L'entraide entre voisins</p>
         </div>
 
         <form onSubmit={handleSearch} className="relative">
@@ -429,14 +429,14 @@ export function HomePage() {
 
       <div className="relative -mt-10 bg-cream-50 rounded-t-[2rem] flex-1 pb-24">
         <div className="px-4 pt-6 pb-4">
-        <div className="mb-3 overflow-x-auto pb-2 -mx-4 px-4">
+        <div className="mb-4 overflow-x-auto pb-2 -mx-4 px-4">
           <div className="flex gap-2">
             <button
               onClick={() => setSelectedCategory('all')}
-              className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
+              className={`px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all ${
                 selectedCategory === 'all'
-                  ? 'bg-primary-600 text-white'
-                  : 'bg-white text-stone-600 border border-stone-200 hover:border-stone-300'
+                  ? 'bg-primary-600 text-white shadow-sm'
+                  : 'bg-white text-stone-500 border border-stone-200 hover:border-stone-300 hover:text-stone-700'
               }`}
             >
               Tous
@@ -447,10 +447,10 @@ export function HomePage() {
                 <button
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
+                  className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all ${
                     selectedCategory === cat.id
-                      ? 'bg-primary-600 text-white'
-                      : 'bg-white text-stone-600 border border-stone-200 hover:border-stone-300'
+                      ? 'bg-primary-600 text-white shadow-sm'
+                      : 'bg-white text-stone-500 border border-stone-200 hover:border-stone-300 hover:text-stone-700'
                   }`}
                 >
                   <Icon size={16} />
@@ -461,7 +461,7 @@ export function HomePage() {
           </div>
         </div>
 
-        <div className="flex gap-2 mb-3 overflow-x-auto pb-1 -mx-4 px-4">
+        <div className="flex gap-2 mb-4 overflow-x-auto pb-1 -mx-4 px-4">
           {TYPE_OPTIONS.map(option => {
             const Icon = option.icon;
             const isSelected = selectedTypes.has(option.value as ListingType);
@@ -469,10 +469,10 @@ export function HomePage() {
               <button
                 key={option.value}
                 onClick={() => toggleType(option.value as ListingType)}
-                className={`flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-colors ${
+                className={`flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all ${
                   isSelected
-                    ? option.activeClass
-                    : 'bg-white text-stone-600 border border-stone-200 hover:border-stone-300'
+                    ? `${option.activeClass} shadow-sm`
+                    : 'bg-white text-stone-500 border border-stone-200 hover:border-stone-300 hover:text-stone-700'
                 }`}
               >
                 <Icon size={16} />
@@ -483,8 +483,8 @@ export function HomePage() {
         </div>
 
         {activeFilterCount > 0 && (
-          <div className="flex items-center justify-between mb-3 bg-stone-50 rounded-xl px-4 py-3">
-            <span className="text-sm text-stone-600">
+          <div className="flex items-center justify-between mb-4 bg-white rounded-2xl border border-stone-200 px-4 py-3">
+            <span className="text-sm text-stone-500">
               {activeFilterCount} filtre{activeFilterCount > 1 ? 's' : ''} actif{activeFilterCount > 1 ? 's' : ''}
             </span>
             <button
@@ -492,18 +492,18 @@ export function HomePage() {
               className="flex items-center gap-1 text-sm text-primary-600 font-medium hover:text-primary-700"
             >
               <X size={16} />
-              Effacer tout
+              Effacer
             </button>
           </div>
         )}
 
-        <div className="flex items-center justify-between mb-3">
-          <h2 className="text-xl font-semibold text-stone-800">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-lg font-semibold text-stone-800">
             {searchCoords
               ? `À ${radiusKm} km de ${searchCoords.city}`
               : 'Dernières annonces'}
           </h2>
-          <span className="text-sm text-stone-500">
+          <span className="text-xs text-stone-400 font-medium">
             {listings.length} résultat{listings.length !== 1 ? 's' : ''}
           </span>
         </div>
@@ -557,7 +557,7 @@ export function HomePage() {
               <button
                 onClick={loadMore}
                 disabled={loadingMore}
-                className="w-full py-3 flex items-center justify-center gap-2 text-primary-600 font-medium bg-white border border-stone-200 rounded-xl hover:bg-stone-50 transition-colors disabled:opacity-50"
+                className="w-full py-3 flex items-center justify-center gap-2 text-primary-600 font-medium bg-white border border-stone-200 rounded-2xl hover:border-stone-300 transition-all disabled:opacity-50"
               >
                 {loadingMore ? (
                   <div className="animate-spin rounded-full h-5 w-5 border-2 border-primary-600 border-t-transparent" />
@@ -573,13 +573,13 @@ export function HomePage() {
         )}
       </div>
 
-        <div className="px-4 py-10 text-center">
-          <div className="max-w-md mx-auto">
-            <h2 className="text-2xl font-bold text-stone-900 mb-3">Lancez le mouvement dans votre quartier</h2>
-            <p className="text-stone-600 mb-6 leading-relaxed">
-              Voisinage ne fonctionne que si vous le partagez. Pas d'algorithme, pas de pub — juste des voisins qui s'entraident. Publiez votre première annonce et parlez-en autour de vous.
+        <div className="px-4 py-10">
+          <div className="max-w-md mx-auto bg-white rounded-2xl border border-stone-200 p-6 text-center">
+            <h2 className="text-xl font-bold text-stone-900 mb-2">Lancez le mouvement</h2>
+            <p className="text-sm text-stone-500 mb-6 leading-relaxed">
+              Pas d'algorithme, pas de pub — juste des voisins qui s'entraident. Publiez votre première annonce et parlez-en autour de vous.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center mb-8">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
               <Link to="/creer" className="btn-primary">Publier une annonce</Link>
               <button
                 onClick={() => {
@@ -596,7 +596,7 @@ export function HomePage() {
               </button>
             </div>
             <p className="text-xs text-stone-400 leading-relaxed">
-              Voisinage est un projet offert à la communauté. Si vous souhaitez soutenir son développement, <a href="mailto:contact@voisinage.app" className="text-primary-600 hover:underline">contactez-nous</a>.
+              Un projet offert à la communauté. <a href="mailto:contact@voisinage.app" className="text-primary-600 hover:underline">Nous contacter</a>
             </p>
           </div>
         </div>

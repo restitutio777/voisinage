@@ -73,7 +73,7 @@ export function OnboardingPage() {
       <header className="flex items-center justify-between px-4 py-3">
         <div className="flex items-center gap-2">
           <Logo size={28} />
-          <span className="text-lg font-semibold text-stone-800">Voisinage</span>
+          <span className="text-lg font-bold text-stone-800" style={{ fontFamily: "'Nunito', sans-serif", letterSpacing: '0.02em' }}>Voisinage</span>
         </div>
         {!isLast && (
           <button

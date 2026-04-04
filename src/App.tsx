@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { AuthProvider } from './contexts/AuthContext';
 import { ToastProvider } from './contexts/ToastContext';
 import { ErrorBoundary } from './components/ErrorBoundary';
@@ -25,37 +26,39 @@ import { CGUPage } from './pages/CGUPage';
 
 function App() {
   return (
-    <ErrorBoundary>
-      <AuthProvider>
-        <ToastProvider>
-          <BrowserRouter>
-            <PWAUpdateNotification />
-            <PWAInstallPrompt />
-            <Layout>
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/annonce/:id" element={<ListingDetailPage />} />
-                <Route path="/creer" element={<CreateListingPage />} />
-                <Route path="/echanger" element={<ExchangePage />} />
-                <Route path="/echanger/nouveau" element={<CreateExchangeWishPage />} />
-                <Route path="/messages" element={<MessagesPage />} />
-                <Route path="/messages/:id" element={<ConversationPage />} />
-                <Route path="/profil" element={<ProfilePage />} />
-                <Route path="/voisin/:id" element={<PublicProfilePage />} />
-                <Route path="/decouvrir-app" element={<OnboardingPage />} />
-                <Route path="/connexion" element={<LoginPage />} />
-                <Route path="/inscription" element={<RegisterPage />} />
-                <Route path="/nouveau-mot-de-passe" element={<ResetPasswordPage />} />
-                <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
-                <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />
-                <Route path="/conditions-utilisation" element={<CGUPage />} />
-                <Route path="*" element={<NotFoundPage />} />
-              </Routes>
-            </Layout>
-          </BrowserRouter>
-        </ToastProvider>
-      </AuthProvider>
-    </ErrorBoundary>
+    <HelmetProvider>
+      <ErrorBoundary>
+        <AuthProvider>
+          <ToastProvider>
+            <BrowserRouter>
+              <PWAUpdateNotification />
+              <PWAInstallPrompt />
+              <Layout>
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/annonce/:id" element={<ListingDetailPage />} />
+                  <Route path="/creer" element={<CreateListingPage />} />
+                  <Route path="/echanger" element={<ExchangePage />} />
+                  <Route path="/echanger/nouveau" element={<CreateExchangeWishPage />} />
+                  <Route path="/messages" element={<MessagesPage />} />
+                  <Route path="/messages/:id" element={<ConversationPage />} />
+                  <Route path="/profil" element={<ProfilePage />} />
+                  <Route path="/voisin/:id" element={<PublicProfilePage />} />
+                  <Route path="/decouvrir-app" element={<OnboardingPage />} />
+                  <Route path="/connexion" element={<LoginPage />} />
+                  <Route path="/inscription" element={<RegisterPage />} />
+                  <Route path="/nouveau-mot-de-passe" element={<ResetPasswordPage />} />
+                  <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
+                  <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />
+                  <Route path="/conditions-utilisation" element={<CGUPage />} />
+                  <Route path="*" element={<NotFoundPage />} />
+                </Routes>
+              </Layout>
+            </BrowserRouter>
+          </ToastProvider>
+        </AuthProvider>
+      </ErrorBoundary>
+    </HelmetProvider>
   );
 }
 

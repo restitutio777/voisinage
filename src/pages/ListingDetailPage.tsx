@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, MapPin, User, Calendar, MessageCircle, ShoppingBasket, Wrench, HeartHandshake, Shirt, Package, Leaf, Flag, CheckCircle, Clock, Info } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
@@ -175,6 +176,48 @@ export function ListingDetailPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {listing && (
+        <Helmet>
+          <title>{`${listing.title} — ${typeLabels[listing.listing_type]} à ${listing.city || listing.postal_code} | Voisinage.app`}</title>
+          <meta name="description" content={`${typeLabels[listing.listing_type]} à ${listing.city || listing.postal_code}${listing.description ? ` — ${listing.description.slice(0, 140)}` : ''}. Entraide locale entre voisins sur Voisinage.app`} />
+          <meta property="og:title" content={`${listing.title} — ${typeLabels[listing.listing_type]} à ${listing.city || listing.postal_code}`} />
+          <meta property="og:description" content={`${typeLabels[listing.listing_type]}${listing.description ? ` — ${listing.description.slice(0, 140)}` : ''}`} />
+          <meta property="og:type" content="product" />
+          <meta property="og:url" content={`https://voisinage.app/annonce/${listing.id}`} />
+          {listing.image_url && <meta property="og:image" content={listing.image_url} />}
+          <link rel="canonical" href={`https://voisinage.app/annonce/${listing.id}`} />
+          <script type="application/ld+json">
+            {JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': listing.listing_type === 'vendre' ? 'Product' : 'Offer',
+              name: listing.title,
+              description: listing.description || `${typeLabels[listing.listing_type]} à ${listing.city || listing.postal_code}`,
+              ...(listing.image_url ? { image: listing.image_url } : {}),
+              ...(listing.listing_type === 'vendre' && listing.price
+                ? {
+                    offers: {
+                      '@type': 'Offer',
+                      price: listing.price,
+                      priceCurrency: 'EUR',
+                      availability: 'https://schema.org/InStock',
+                      areaServed: { '@type': 'City', name: listing.city || listing.postal_code },
+                    },
+                  }
+                : {
+                    price: '0',
+                    priceCurrency: 'EUR',
+                    areaServed: { '@type': 'City', name: listing.city || listing.postal_code },
+                  }),
+              seller: {
+                '@type': 'Person',
+                name: listing.profile?.username || 'Voisin',
+                address: { '@type': 'PostalAddress', addressLocality: listing.city || '', postalCode: listing.postal_code || '' },
+              },
+            })}
+          </script>
+        </Helmet>
+      )}
+
       <header className="sticky top-0 bg-gradient-to-r from-primary-50 to-cream-100 border-b border-stone-200 px-4 py-3 z-10 shadow-sm">
         <div className="flex items-center justify-between">
           <button
