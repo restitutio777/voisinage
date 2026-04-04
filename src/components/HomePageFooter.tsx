@@ -6,18 +6,18 @@ export function HomePageFooter() {
       <div className="max-w-3xl mx-auto">
         <div className="border-t border-stone-200 pt-8 mb-8">
           <h2 className="text-lg font-bold text-stone-800 text-center mb-4">
-            Donnez, échangez, prêtez et vendez entre voisins
+            On n'a pas besoin de plus de choses. On a besoin de plus de liens.
           </h2>
           <p className="text-sm text-stone-500 leading-relaxed text-center mb-6">
-            <strong className="text-stone-600">Voisinage</strong> connecte les habitants d'un même quartier. Tout se passe près de chez vous.
+            Le pouvoir d'achat baisse, les objets s'accumulent, les voisins ne se connaissent plus. <strong className="text-stone-600">Voisinage</strong> inverse la tendance — quartier par quartier.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
-              { title: 'Donner', text: 'Offrez ce dont vous n\'avez plus l\'usage. Un geste simple contre le gaspillage.' },
-              { title: 'Échanger', text: 'Troquez biens et services avec vos voisins. Malin et convivial.' },
-              { title: 'Prêter', text: 'Partagez outils, matériel et équipements en toute confiance.' },
-              { title: 'Vendre', text: 'Prix justes, zéro frais d\'envoi, en main propre entre voisins.' },
+              { title: 'Donner', text: 'Ce qui dort chez vous peut servir à côté. Moins de gaspillage, plus de solidarité.' },
+              { title: 'Échanger', text: 'Troquez un savoir-faire contre un objet. L\'économie de quartier, sans intermédiaire.' },
+              { title: 'Prêter', text: 'Une perceuse sert 12 minutes dans sa vie. Partagez-la avec vos voisins.' },
+              { title: 'Vendre', text: 'Prix juste, zéro frais, en main propre. L\'argent reste dans le quartier.' },
             ].map(item => (
               <div key={item.title} className="bg-white rounded-2xl border border-stone-200 p-4">
                 <h3 className="text-sm font-semibold text-stone-800 mb-1">{item.title}</h3>

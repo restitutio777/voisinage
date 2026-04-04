@@ -10,9 +10,9 @@ const slides = [
     icon: Gift,
     iconBg: 'bg-primary-100',
     iconColor: 'text-primary-600',
-    title: 'Bienvenue sur Voisinage',
+    title: 'Tout coûte plus cher. Vos voisins peuvent aider.',
     description:
-      'La plateforme d\'entraide locale entre voisins. Donnez, échangez, prêtez ou vendez avec les habitants de votre quartier.',
+      'Inflation, isolement, surconsommation — la réponse est locale. Voisinage connecte les habitants d\'un même quartier pour s\'entraider concrètement.',
     image: 'https://images.unsplash.com/photo-1592419044706-39796d40f98c?w=600&h=400&fit=crop',
   },
   {
@@ -22,7 +22,7 @@ const slides = [
     iconColor: 'text-donner-dark',
     title: 'Donnez, Échangez, Prêtez, Vendez',
     description:
-      'Cinq façons de vous entraider entre voisins. Offrez ce dont vous n\'avez plus besoin, troquez, prêtez vos outils, vendez à petit prix ou publiez une recherche.',
+      'Cinq actions concrètes. Offrez ce qui dort chez vous, troquez un service, prêtez vos outils, vendez à prix juste ou cherchez ce qu\'il vous faut — sans intermédiaire.',
     badges: [
       { label: 'Donner', icon: Gift, bg: 'bg-donner', text: 'text-white' },
       { label: 'Échanger', icon: RefreshCw, bg: 'bg-echanger', text: 'text-white' },
@@ -36,9 +36,9 @@ const slides = [
     icon: MapPin,
     iconBg: 'bg-sun-light/30',
     iconColor: 'text-sun-dark',
-    title: 'Trouvez près de chez vous',
+    title: 'Votre quartier, votre réseau',
     description:
-      'Recherchez par code postal pour découvrir les annonces de vos voisins. Tout se passe en local, dans votre quartier.',
+      'Recherchez par code postal. Découvrez ce que vos voisins proposent. Tout se passe à côté de chez vous — pas de livraison, pas d\'intermédiaire.',
     image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&h=400&fit=crop',
   },
 ];

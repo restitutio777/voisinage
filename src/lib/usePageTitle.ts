@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 const BASE_TITLE = 'Voisinage.app — Entraide entre voisins';
-const HOME_TITLE = 'Don d\'objets, prêt d\'outils et échange de services entre voisins | Voisinage.app';
+const HOME_TITLE = 'Don d\'objets, prêt d\'outils et échange entre voisins — entraide locale | Voisinage.app';
 
 export function usePageTitle(title?: string) {
   useEffect(() => {

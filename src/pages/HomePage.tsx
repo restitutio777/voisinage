@@ -375,7 +375,7 @@ export function HomePage() {
             <Logo size={28} />
           </div>
           <h1 className="text-2xl font-bold text-white leading-none" style={{ fontFamily: "'Nunito', sans-serif", letterSpacing: '0.02em', textShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>Voisinage</h1>
-          <p className="text-[11px] font-semibold tracking-wider uppercase text-white/70 mt-1" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>L'entraide entre voisins</p>
+          <p className="text-[11px] font-semibold tracking-wider uppercase text-white/70 mt-1" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>Reprenez la main, localement</p>
         </div>
 
         <form onSubmit={handleSearch} className="relative">
@@ -543,12 +543,12 @@ export function HomePage() {
             />
           </div>
         ) : (
-          <div className="space-y-3">
+          <div className="space-y-2.5">
             {listings.map((listing, index) => (
               <div
                 key={listing.id}
                 className="animate-scale-in"
-                style={{ animationDelay: `${index * 50}ms` }}
+                style={{ animationDelay: `${Math.min(index * 30, 300)}ms` }}
               >
                 <ListingCard listing={listing} distanceKm={listing.distance_km} />
               </div>
@@ -575,9 +575,9 @@ export function HomePage() {
 
         <div className="px-4 py-10">
           <div className="max-w-md mx-auto bg-white rounded-2xl border border-stone-200 p-6 text-center">
-            <h2 className="text-xl font-bold text-stone-900 mb-2">Lancez le mouvement</h2>
+            <h2 className="text-xl font-bold text-stone-900 mb-2">Tout coûte plus cher. Vos voisins sont la solution.</h2>
             <p className="text-sm text-stone-500 mb-6 leading-relaxed">
-              Pas d'algorithme, pas de pub — juste des voisins qui s'entraident. Publiez votre première annonce et parlez-en autour de vous.
+              Inflation, isolement, surconsommation — on le vit tous. Ici, pas d'algorithme ni de pub. Juste des voisins qui partagent ce qu'ils ont. Chaque annonce est un acte concret.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
               <Link to="/creer" className="btn-primary">Publier une annonce</Link>
