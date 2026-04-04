@@ -1,5 +1,6 @@
 import { Component, type ReactNode } from 'react';
-import { Leaf, RefreshCw } from 'lucide-react';
+import { RefreshCw } from 'lucide-react';
+import { Logo } from './Logo';
 
 interface Props {
   children: ReactNode;
@@ -28,8 +29,8 @@ export class ErrorBoundary extends Component<Props, State> {
       return (
         <div className="min-h-screen bg-white flex items-center justify-center px-4">
           <div className="text-center max-w-sm">
-            <div className="bg-vendre-light w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Leaf size={48} className="text-vendre" />
+            <div className="flex justify-center mb-6">
+              <Logo size={64} />
             </div>
             <h1 className="text-2xl font-bold text-stone-900 mb-2">
               Quelque chose s'est mal passe

@@ -40,7 +40,15 @@ export function ConversationPage() {
           },
           (payload) => {
             const newMsg = payload.new as Message;
-            setMessages((prev) => [...prev, newMsg]);
+            setMessages((prev) => {
+              // Skip if already present (from optimistic insert or duplicate event)
+              if (prev.some((m) => m.id === newMsg.id)) return prev;
+              // Remove any temp optimistic message for our own messages
+              const filtered = newMsg.sender_id === user.id
+                ? prev.filter((m) => !m.id.startsWith('temp-'))
+                : prev;
+              return [...filtered, newMsg];
+            });
             if (newMsg.sender_id !== user.id) {
               markAsRead();
             }
@@ -123,23 +131,41 @@ export function ConversationPage() {
     const messageContent = newMessage.trim();
     setNewMessage('');
 
+    // Optimistic: show message immediately
+    const optimisticMsg: Message = {
+      id: `temp-${Date.now()}`,
+      conversation_id: id,
+      sender_id: user.id,
+      content: messageContent,
+      is_read: false,
+      created_at: new Date().toISOString(),
+    };
+    setMessages((prev) => [...prev, optimisticMsg]);
+
     try {
-      const { error } = await supabase.from('messages').insert({
+      const { data, error } = await supabase.from('messages').insert({
         conversation_id: id,
         sender_id: user.id,
         content: messageContent,
-      });
+      }).select().single();
 
       if (error) throw error;
+
+      // Replace optimistic message with real one
+      if (data) {
+        setMessages((prev) =>
+          prev.map((m) => (m.id === optimisticMsg.id ? data : m))
+        );
+      }
     } catch {
+      // Remove optimistic message and restore input
+      setMessages((prev) => prev.filter((m) => m.id !== optimisticMsg.id));
       setNewMessage(messageContent);
       showToast('Impossible d\'envoyer le message', 'error');
     } finally {
       setSending(false);
     }
   }
-
-  if (!user) return null;
 
   if (!user) {
     navigate('/connexion', { state: { from: `/messages/${id}` } });

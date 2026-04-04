@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Gift, RefreshCw, Euro, MapPin, Leaf, ChevronRight, ChevronLeft, Clock, Search } from 'lucide-react';
+import { Gift, RefreshCw, Euro, MapPin, ChevronRight, ChevronLeft, Clock, Search } from 'lucide-react';
 import { usePageTitle } from '../lib/usePageTitle';
 import { Logo } from '../components/Logo';
 
 const slides = [
   {
     id: 'welcome',
-    icon: Leaf,
+    icon: Gift,
     iconBg: 'bg-primary-100',
     iconColor: 'text-primary-600',
     title: 'Bienvenue sur Voisinage',

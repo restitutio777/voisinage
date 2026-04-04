@@ -82,7 +82,8 @@ export default {
         '3xl': ['30px', '1.3'],
       },
       fontFamily: {
-        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        sans: ['DM Sans', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        heading: ['Outfit', 'system-ui', 'sans-serif'],
       },
       spacing: {
         '18': '4.5rem',

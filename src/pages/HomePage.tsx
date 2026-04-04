@@ -374,7 +374,7 @@ export function HomePage() {
           <div className="w-[4.5rem] h-[4.5rem] rounded-full bg-white/95 backdrop-blur-sm flex items-center justify-center shadow-xl shadow-black/25 mb-5 ring-2 ring-sun/40">
             <Logo size={44} />
           </div>
-          <h1 className="text-4xl font-bold tracking-tight mb-2" style={{ fontFamily: "'Playfair Display', serif", textShadow: '0 2px 12px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.4)', color: '#fff3e0' }}>Voisinage</h1>
+          <h1 className="text-4xl font-bold tracking-tight mb-2 font-heading" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.4)', color: '#fff3e0' }}>Voisinage</h1>
           <p className="text-sm font-semibold tracking-wider uppercase text-white bg-stone-900/50 backdrop-blur-md px-5 py-2 rounded-full border border-white/15 shadow-lg shadow-black/10" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>L'entraide entre voisins</p>
         </div>
 

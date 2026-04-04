@@ -24,24 +24,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    // Use onAuthStateChange as single source of truth (Supabase recommended pattern).
+    // INITIAL_SESSION fires on page load with the persisted session.
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       setSession(session);
       setUser(session?.user ?? null);
-      if (session?.user) {
-        fetchProfile(session.user.id);
-      } else {
-        setLoading(false);
-      }
-    });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-      setUser(session?.user ?? null);
       if (session?.user) {
         fetchProfile(session.user.id);
       } else {
         setProfile(null);
         setLoading(false);
+      }
+
+      if (event === 'PASSWORD_RECOVERY') {
+        window.location.href = '/nouveau-mot-de-passe';
       }
     });
 
@@ -84,7 +81,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   async function resetPassword(email: string) {
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/connexion`,
+      redirectTo: `${window.location.origin}/nouveau-mot-de-passe`,
     });
     return { error: error as Error | null };
   }

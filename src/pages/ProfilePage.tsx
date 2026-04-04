@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { User, MapPin, Calendar, LogOut, Edit2, Trash2, Leaf, Bell, BellOff, CheckCircle, FileText, Shield, Scale } from 'lucide-react';
+import { Logo } from '../components/Logo';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
 import { useToast } from '../contexts/ToastContext';
@@ -217,8 +218,8 @@ export function ProfilePage() {
         </header>
 
         <div className="px-4 py-12 text-center">
-          <div className="bg-primary-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Leaf size={40} className="text-primary-600" />
+          <div className="flex justify-center mb-6">
+            <Logo size={56} />
           </div>
           <h2 className="text-xl font-semibold text-stone-800 mb-2">
             Rejoignez Voisinage

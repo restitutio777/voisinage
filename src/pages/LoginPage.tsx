@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { ArrowLeft, Eye, EyeOff, Leaf, Mail } from 'lucide-react';
+import { ArrowLeft, Eye, EyeOff, Mail } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { usePageTitle } from '../lib/usePageTitle';
+import { Logo } from '../components/Logo';
 import { FooterLinks } from '../components/FooterLinks';
 
 export function LoginPage() {
@@ -71,9 +72,7 @@ export function LoginPage() {
 
       <div className="px-4 py-8">
         <div className="flex items-center justify-center gap-3 mb-8">
-          <div className="bg-primary-100 p-3 rounded-xl">
-            <Leaf size={32} className="text-primary-600" />
-          </div>
+          <Logo size={44} />
           <h1 className="text-2xl font-bold text-stone-900">Connexion</h1>
         </div>
 

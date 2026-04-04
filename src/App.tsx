@@ -16,6 +16,7 @@ import { ProfilePage } from './pages/ProfilePage';
 import { PublicProfilePage } from './pages/PublicProfilePage';
 import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
+import { ResetPasswordPage } from './pages/ResetPasswordPage';
 import { OnboardingPage } from './pages/OnboardingPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { MentionsLegalesPage } from './pages/MentionsLegalesPage';
@@ -44,6 +45,7 @@ function App() {
                 <Route path="/decouvrir-app" element={<OnboardingPage />} />
                 <Route path="/connexion" element={<LoginPage />} />
                 <Route path="/inscription" element={<RegisterPage />} />
+                <Route path="/nouveau-mot-de-passe" element={<ResetPasswordPage />} />
                 <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
                 <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />
                 <Route path="/conditions-utilisation" element={<CGUPage />} />
