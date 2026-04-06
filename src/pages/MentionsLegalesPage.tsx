@@ -1,10 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Building2, Server, Scale, Shield, Mail } from 'lucide-react';
-import { usePageTitle } from '../lib/usePageTitle';
+import { usePageMeta } from '../lib/usePageMeta';
 import { FooterLinks } from '../components/FooterLinks';
 
 export function MentionsLegalesPage() {
-  usePageTitle('Mentions legales');
+  usePageMeta({
+    title: 'Mentions légales | Voisinage.app',
+    description: "Mentions légales de Voisinage.app — informations sur l'éditeur, l'hébergeur et les conditions d'utilisation du service d'entraide entre voisins.",
+    canonical: 'https://voisinage.app/mentions-legales',
+  });
   const navigate = useNavigate();
 
   return (

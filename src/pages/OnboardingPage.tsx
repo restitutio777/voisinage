@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Gift, RefreshCw, Euro, MapPin, ChevronRight, ChevronLeft, Clock, Search } from 'lucide-react';
-import { usePageTitle } from '../lib/usePageTitle';
+import { usePageMeta } from '../lib/usePageMeta';
 import { Logo } from '../components/Logo';
 
 const slides = [
@@ -44,7 +44,11 @@ const slides = [
 ];
 
 export function OnboardingPage() {
-  usePageTitle('Découvrir');
+  usePageMeta({
+    title: "Découvrir Voisinage.app — entraide locale entre voisins | Voisinage.app",
+    description: "Découvrez comment Voisinage.app vous connecte à vos voisins. Don, prêt, échange, vente — tout se passe par code postal, gratuitement.",
+    canonical: 'https://voisinage.app/decouvrir-app',
+  });
   const navigate = useNavigate();
   const [current, setCurrent] = useState(0);
   const slide = slides[current];

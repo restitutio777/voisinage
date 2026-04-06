@@ -1,10 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, FileText, UserPlus, ShoppingBag, AlertTriangle, Shield, Scale, RefreshCw } from 'lucide-react';
-import { usePageTitle } from '../lib/usePageTitle';
+import { usePageMeta } from '../lib/usePageMeta';
 import { FooterLinks } from '../components/FooterLinks';
 
 export function CGUPage() {
-  usePageTitle('Conditions generales d\'utilisation');
+  usePageMeta({
+    title: "Conditions générales d'utilisation | Voisinage.app",
+    description: "Conditions générales d'utilisation de Voisinage.app — règles d'utilisation du service de don, prêt et échange entre voisins.",
+    canonical: 'https://voisinage.app/conditions-utilisation',
+  });
   const navigate = useNavigate();
 
   return (

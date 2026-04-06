@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Search, MapPin } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { usePageTitle } from '../../lib/usePageTitle';
+import { usePageMeta } from '../../lib/usePageMeta';
 import { Logo } from '../../components/Logo';
 import { FooterLinks } from '../../components/FooterLinks';
 
@@ -42,20 +41,10 @@ export function SeoLandingPage({
   ctaTitle,
   ctaText,
 }: SeoLandingPageProps) {
-  usePageTitle(pageTitle);
   const navigate = useNavigate();
   const [postalCode, setPostalCode] = useState('');
 
-  function handleSearch(e: React.FormEvent) {
-    e.preventDefault();
-    if (postalCode.length === 5) {
-      navigate(`/?cp=${postalCode}`);
-    } else {
-      navigate('/');
-    }
-  }
-
-  const faqSchema = {
+  const faqSchema = useMemo(() => ({
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: faqs.map(faq => ({
@@ -66,20 +55,26 @@ export function SeoLandingPage({
         text: faq.answer,
       },
     })),
-  };
+  }), [faqs]);
+
+  usePageMeta({
+    title: metaTitle,
+    description: metaDescription,
+    canonical: `https://voisinage.app${canonicalPath}`,
+    jsonLd: faqSchema,
+  });
+
+  function handleSearch(e: React.FormEvent) {
+    e.preventDefault();
+    if (postalCode.length === 5) {
+      navigate(`/?cp=${postalCode}`);
+    } else {
+      navigate('/');
+    }
+  }
 
   return (
     <div className="min-h-screen bg-white">
-      <Helmet>
-        <title>{metaTitle}</title>
-        <meta name="description" content={metaDescription} />
-        <meta property="og:title" content={metaTitle} />
-        <meta property="og:description" content={metaDescription} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://voisinage.app${canonicalPath}`} />
-        <link rel="canonical" href={`https://voisinage.app${canonicalPath}`} />
-        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
-      </Helmet>
 
       <header className="sticky top-0 bg-white border-b border-stone-200 px-4 py-3 z-10">
         <div className="flex items-center justify-between">

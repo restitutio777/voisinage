@@ -1,10 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Shield, Database, Clock, UserCheck, Cookie, Mail } from 'lucide-react';
-import { usePageTitle } from '../lib/usePageTitle';
+import { usePageMeta } from '../lib/usePageMeta';
 import { FooterLinks } from '../components/FooterLinks';
 
 export function PolitiqueConfidentialitePage() {
-  usePageTitle('Politique de confidentialite');
+  usePageMeta({
+    title: 'Politique de confidentialité | Voisinage.app',
+    description: "Politique de confidentialité de Voisinage.app — traitement des données personnelles et protection de la vie privée.",
+    canonical: 'https://voisinage.app/politique-confidentialite',
+  });
   const navigate = useNavigate();
 
   return (

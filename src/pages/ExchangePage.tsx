@@ -4,7 +4,7 @@ import { Plus, ArrowLeftRight, Search, ShoppingBasket, Wrench, HeartHandshake, S
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
 import { useToast } from '../contexts/ToastContext';
-import { usePageTitle } from '../lib/usePageTitle';
+import { usePageMeta } from '../lib/usePageMeta';
 import { ExchangeWishCard } from '../components/ExchangeWishCard';
 import { ExchangeMatchCard } from '../components/ExchangeMatchCard';
 import { EmptyState } from '../components/EmptyState';
@@ -21,7 +21,11 @@ const categoryIcons: Record<string, typeof ShoppingBasket> = {
 type TabType = 'matches' | 'my-wishes' | 'discover';
 
 export function ExchangePage() {
-  usePageTitle('Echanger');
+  usePageMeta({
+    title: "Échanger entre voisins — troc d'objets et de services | Voisinage.app",
+    description: "Proposez ou cherchez un échange entre voisins. Troc d'objets, services, coups de main — sans argent, par code postal.",
+    canonical: 'https://voisinage.app/echanger',
+  });
   const navigate = useNavigate();
   const { user } = useAuth();
   const { showToast } = useToast();

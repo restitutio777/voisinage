@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
 import { AuthProvider } from './contexts/AuthContext';
 import { ToastProvider } from './contexts/ToastContext';
 import { ErrorBoundary } from './components/ErrorBoundary';
@@ -30,8 +29,7 @@ import { EntraideLocalePage } from './pages/seo/EntraideLocalePage';
 
 function App() {
   return (
-    <HelmetProvider>
-      <ErrorBoundary>
+    <ErrorBoundary>
         <AuthProvider>
           <ToastProvider>
             <BrowserRouter>
@@ -66,7 +64,6 @@ function App() {
           </ToastProvider>
         </AuthProvider>
       </ErrorBoundary>
-    </HelmetProvider>
   );
 }
 

@@ -1,9 +1,13 @@
 User-agent: *
 Allow: /
+
 Disallow: /messages
 Disallow: /messages/
 Disallow: /profil
 Disallow: /connexion
 Disallow: /inscription
+Disallow: /nouveau-mot-de-passe
+Disallow: /voisin/
+Disallow: /echanger/nouveau
 
 Sitemap: https://voisinage.app/sitemap.xml

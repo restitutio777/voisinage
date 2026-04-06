@@ -4,7 +4,7 @@ import { ArrowLeft, Camera, Image, ShoppingBasket, Wrench, HeartHandshake, Shirt
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
 import { useToast } from '../contexts/ToastContext';
-import { usePageTitle } from '../lib/usePageTitle';
+import { usePageMeta } from '../lib/usePageMeta';
 import { geocodePostalCode } from '../lib/geocoding';
 import type { Category, ListingType, QuantityThreshold } from '../lib/database.types';
 
@@ -26,7 +26,11 @@ const listingTypes: { value: ListingType; label: string; description: string; ic
 
 
 export function CreateListingPage() {
-  usePageTitle('Créer une annonce');
+  usePageMeta({
+    title: 'Publier une annonce gratuite entre voisins | Voisinage.app',
+    description: "Créez une annonce en 30 secondes. Donnez, prêtez, échangez ou vendez un objet ou un service à vos voisins. Gratuit, local, sans intermédiaire.",
+    canonical: 'https://voisinage.app/creer',
+  });
   const navigate = useNavigate();
   const { user, profile } = useAuth();
   const { showToast } = useToast();
